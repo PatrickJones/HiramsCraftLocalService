@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d79a12e029854d88a6dde652d7f232b6" Name="Diagram1">
+        <EntityTypeShape EntityType="HiramGroupModel.HiramsCraftPO" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HiramGroupModel.HiramsCraftProduct" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="HiramGroupModel.MaterialProvider" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HiramGroupModel.Provider" Width="1.5" PointX="4.375" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HiramGroupModel.ServiceProvider" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="HiramGroupModel.FK_dbo_MaterialProviders_dbo_HiramsCraftProduct_ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="HiramGroupModel.FK_dbo_ServiceProviders_dbo_HiramsCraftProduct_ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="HiramGroupModel.FK_dbo_MaterialProviders_dbo_Provider_ProviderId" ManuallyRouted="false" />
+        <AssociationConnector Association="HiramGroupModel.FK_dbo_ServiceProviders_dbo_Provider_ProviderId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

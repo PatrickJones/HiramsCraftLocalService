@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HiramGroupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HiramsCraftPO">
+          <Key>
+            <PropertyRef Name="PurchaseOrderId" />
+          </Key>
+          <Property Name="PurchaseOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastUpdate" Type="datetime" />
+          <Property Name="OrderJSON" Type="nvarchar(max)" />
+          <Property Name="OrderNumber" Type="nvarchar(max)" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="ItemsCount" Type="int" />
+          <Property Name="OrderStatus" Type="int" Nullable="false" />
+          <Property Name="OrderTotal" Type="float" Nullable="false" />
+          <Property Name="CustFirstname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CustLastname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="CreditCardType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CardNumber" Type="int" Nullable="false" />
+          <Property Name="CardExpiration" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ShipFullname" Type="nvarchar(max)" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar(max)" />
+          <Property Name="ShipCity" Type="nvarchar(max)" />
+          <Property Name="ShipState" Type="nvarchar(max)" />
+          <Property Name="ShipCountry" Type="nvarchar(max)" />
+          <Property Name="ShipPostalCode" Type="nvarchar(max)" />
+          <Property Name="ShipInstructions" Type="nvarchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="HiramsCraftProduct">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductImage" Type="varbinary(max)" />
+          <Property Name="ImageFileName" Type="nvarchar(max)" />
+          <Property Name="ImageMIMEType" Type="nvarchar(max)" />
+          <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProductCost" Type="float" Nullable="false" />
+          <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+          <Property Name="ProductDescription" Type="nvarchar(max)" />
+          <Property Name="ProductCategory" Type="nvarchar(max)" />
+          <Property Name="ProductSubCategory" Type="nvarchar(max)" />
+          <Property Name="Units" Type="nvarchar(max)" />
+          <Property Name="ProductType" Type="int" Nullable="false" />
+          <Property Name="WoodType" Type="int" Nullable="false" />
+          <Property Name="WoodStainType" Type="int" Nullable="false" />
+          <Property Name="MetalType" Type="int" Nullable="false" />
+          <Property Name="MetalFinish" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaterialProviders">
+          <Key>
+            <PropertyRef Name="MaterialProviderId" />
+          </Key>
+          <Property Name="MaterialProviderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="EstimatedCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ActualCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LeadTime" Type="datetime" Nullable="false" />
+          <Property Name="HasMinimumOrder" Type="bit" Nullable="false" />
+          <Property Name="MinimumOrder" Type="nvarchar(max)" />
+          <Property Name="HasBulkDiscount" Type="bit" Nullable="false" />
+          <Property Name="BulkDiscount" Type="nvarchar(max)" />
+          <Property Name="ProviderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="ProviderId" />
+          </Key>
+          <Property Name="ProviderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProviderName" Type="nvarchar(max)" />
+          <Property Name="Profile" Type="nvarchar(max)" />
+          <Property Name="Website" Type="nvarchar(max)" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="ZipCode" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Fax" Type="nvarchar(max)" />
+          <Property Name="ContactName" Type="nvarchar(max)" />
+          <Property Name="ContactEmail" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ServiceProviders">
+          <Key>
+            <PropertyRef Name="ServiceProviderId" />
+          </Key>
+          <Property Name="ServiceProviderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Service" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="EstimatedCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ActualCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LeadTime" Type="datetime" Nullable="false" />
+          <Property Name="HasMinimumOrder" Type="bit" Nullable="false" />
+          <Property Name="MinimumOrder" Type="nvarchar(max)" />
+          <Property Name="HasBulkDiscount" Type="bit" Nullable="false" />
+          <Property Name="BulkDiscount" Type="nvarchar(max)" />
+          <Property Name="ProviderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_MaterialProviders_dbo_HiramsCraftProduct_ProductId">
+          <End Role="HiramsCraftProduct" Type="Self.HiramsCraftProduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MaterialProviders" Type="Self.MaterialProviders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiramsCraftProduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="MaterialProviders">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MaterialProviders_dbo_Provider_ProviderId">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MaterialProviders" Type="Self.MaterialProviders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="MaterialProviders">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ServiceProviders_dbo_HiramsCraftProduct_ProductId">
+          <End Role="HiramsCraftProduct" Type="Self.HiramsCraftProduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ServiceProviders" Type="Self.ServiceProviders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiramsCraftProduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ServiceProviders">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ServiceProviders_dbo_Provider_ProviderId">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ServiceProviders" Type="Self.ServiceProviders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="ServiceProviders">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HiramGroupModelStoreContainer">
+          <EntitySet Name="HiramsCraftPO" EntityType="Self.HiramsCraftPO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HiramsCraftProduct" EntityType="Self.HiramsCraftProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialProviders" EntityType="Self.MaterialProviders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceProviders" EntityType="Self.ServiceProviders" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_MaterialProviders_dbo_HiramsCraftProduct_ProductId" Association="Self.FK_dbo_MaterialProviders_dbo_HiramsCraftProduct_ProductId">
+            <End Role="HiramsCraftProduct" EntitySet="HiramsCraftProduct" />
+            <End Role="MaterialProviders" EntitySet="MaterialProviders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MaterialProviders_dbo_Provider_ProviderId" Association="Self.FK_dbo_MaterialProviders_dbo_Provider_ProviderId">
+            <End Role="Provider" EntitySet="Provider" />
+            <End Role="MaterialProviders" EntitySet="MaterialProviders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ServiceProviders_dbo_HiramsCraftProduct_ProductId" Association="Self.FK_dbo_ServiceProviders_dbo_HiramsCraftProduct_ProductId">
+            <End Role="HiramsCraftProduct" EntitySet="HiramsCraftProduct" />
+            <End Role="ServiceProviders" EntitySet="ServiceProviders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ServiceProviders_dbo_Provider_ProviderId" Association="Self.FK_dbo_ServiceProviders_dbo_Provider_ProviderId">
+            <End Role="Provider" EntitySet="Provider" />
+            <End Role="ServiceProviders" EntitySet="ServiceProviders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HiramGroupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HiramsCraftPO">
+          <Key>
+            <PropertyRef Name="PurchaseOrderId" />
+          </Key>
+          <Property Name="PurchaseOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <Property Name="OrderJSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemsCount" Type="Int32" />
+          <Property Name="OrderStatus" Type="Int32" Nullable="false" />
+          <Property Name="OrderTotal" Type="Double" Nullable="false" />
+          <Property Name="CustFirstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustLastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreditCardType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CardNumber" Type="Int32" Nullable="false" />
+          <Property Name="CardExpiration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShipFullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShipCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShipState" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShipCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShipPostalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShipInstructions" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HiramsCraftProduct">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageMIMEType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductCost" Type="Double" Nullable="false" />
+          <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductSubCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Units" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductType" Type="Int32" Nullable="false" />
+          <Property Name="WoodType" Type="Int32" Nullable="false" />
+          <Property Name="WoodStainType" Type="Int32" Nullable="false" />
+          <Property Name="MetalType" Type="Int32" Nullable="false" />
+          <Property Name="MetalFinish" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MaterialProviders" Relationship="Self.FK_dbo_MaterialProviders_dbo_HiramsCraftProduct_ProductId" FromRole="HiramsCraftProduct" ToRole="MaterialProviders" />
+          <NavigationProperty Name="ServiceProviders" Relationship="Self.FK_dbo_ServiceProviders_dbo_HiramsCraftProduct_ProductId" FromRole="HiramsCraftProduct" ToRole="ServiceProviders" />
+        </EntityType>
+        <EntityType Name="MaterialProvider">
+          <Key>
+            <PropertyRef Name="MaterialProviderId" />
+          </Key>
+          <Property Name="MaterialProviderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Material" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedCost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ActualCost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LeadTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HasMinimumOrder" Type="Boolean" Nullable="false" />
+          <Property Name="MinimumOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HasBulkDiscount" Type="Boolean" Nullable="false" />
+          <Property Name="BulkDiscount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HiramsCraftProduct" Relationship="Self.FK_dbo_MaterialProviders_dbo_HiramsCraftProduct_ProductId" FromRole="MaterialProviders" ToRole="HiramsCraftProduct" />
+          <NavigationProperty Name="Provider" Relationship="Self.FK_dbo_MaterialProviders_dbo_Provider_ProviderId" FromRole="MaterialProviders" ToRole="Provider" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="ProviderId" />
+          </Key>
+          <Property Name="ProviderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProviderName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MaterialProviders" Relationship="Self.FK_dbo_MaterialProviders_dbo_Provider_ProviderId" FromRole="Provider" ToRole="MaterialProviders" />
+          <NavigationProperty Name="ServiceProviders" Relationship="Self.FK_dbo_ServiceProviders_dbo_Provider_ProviderId" FromRole="Provider" ToRole="ServiceProviders" />
+        </EntityType>
+        <EntityType Name="ServiceProvider">
+          <Key>
+            <PropertyRef Name="ServiceProviderId" />
+          </Key>
+          <Property Name="ServiceProviderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Service" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedCost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ActualCost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LeadTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HasMinimumOrder" Type="Boolean" Nullable="false" />
+          <Property Name="MinimumOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HasBulkDiscount" Type="Boolean" Nullable="false" />
+          <Property Name="BulkDiscount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HiramsCraftProduct" Relationship="Self.FK_dbo_ServiceProviders_dbo_HiramsCraftProduct_ProductId" FromRole="ServiceProviders" ToRole="HiramsCraftProduct" />
+          <NavigationProperty Name="Provider" Relationship="Self.FK_dbo_ServiceProviders_dbo_Provider_ProviderId" FromRole="ServiceProviders" ToRole="Provider" />
+        </EntityType>
+        <Association Name="FK_dbo_MaterialProviders_dbo_HiramsCraftProduct_ProductId">
+          <End Role="HiramsCraftProduct" Type="Self.HiramsCraftProduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MaterialProviders" Type="Self.MaterialProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiramsCraftProduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="MaterialProviders">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ServiceProviders_dbo_HiramsCraftProduct_ProductId">
+          <End Role="HiramsCraftProduct" Type="Self.HiramsCraftProduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ServiceProviders" Type="Self.ServiceProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiramsCraftProduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ServiceProviders">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MaterialProviders_dbo_Provider_ProviderId">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MaterialProviders" Type="Self.MaterialProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="MaterialProviders">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ServiceProviders_dbo_Provider_ProviderId">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ServiceProviders" Type="Self.ServiceProvider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="ProviderId" />
+            </Principal>
+            <Dependent Role="ServiceProviders">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HiramGroupLocalDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HiramsCraftPOes" EntityType="Self.HiramsCraftPO" />
+          <EntitySet Name="HiramsCraftProducts" EntityType="Self.HiramsCraftProduct" />
+          <EntitySet Name="MaterialProviders" EntityType="Self.MaterialProvider" />
+          <EntitySet Name="Providers" EntityType="Self.Provider" />
+          <EntitySet Name="ServiceProviders" EntityType="Self.ServiceProvider" />
+          <AssociationSet Name="FK_dbo_MaterialProviders_dbo_HiramsCraftProduct_ProductId" Association="Self.FK_dbo_MaterialProviders_dbo_HiramsCraftProduct_ProductId">
+            <End Role="HiramsCraftProduct" EntitySet="HiramsCraftProducts" />
+            <End Role="MaterialProviders" EntitySet="MaterialProviders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ServiceProviders_dbo_HiramsCraftProduct_ProductId" Association="Self.FK_dbo_ServiceProviders_dbo_HiramsCraftProduct_ProductId">
+            <End Role="HiramsCraftProduct" EntitySet="HiramsCraftProducts" />
+            <End Role="ServiceProviders" EntitySet="ServiceProviders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MaterialProviders_dbo_Provider_ProviderId" Association="Self.FK_dbo_MaterialProviders_dbo_Provider_ProviderId">
+            <End Role="Provider" EntitySet="Providers" />
+            <End Role="MaterialProviders" EntitySet="MaterialProviders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ServiceProviders_dbo_Provider_ProviderId" Association="Self.FK_dbo_ServiceProviders_dbo_Provider_ProviderId">
+            <End Role="Provider" EntitySet="Providers" />
+            <End Role="ServiceProviders" EntitySet="ServiceProviders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HiramGroupModelStoreContainer" CdmEntityContainer="HiramGroupLocalDB">
+          <EntitySetMapping Name="HiramsCraftPOes">
+            <EntityTypeMapping TypeName="HiramGroupModel.HiramsCraftPO">
+              <MappingFragment StoreEntitySet="HiramsCraftPO">
+                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="OrderJSON" ColumnName="OrderJSON" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="ItemsCount" ColumnName="ItemsCount" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+                <ScalarProperty Name="CustFirstname" ColumnName="CustFirstname" />
+                <ScalarProperty Name="CustLastname" ColumnName="CustLastname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreditCardType" ColumnName="CreditCardType" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CardExpiration" ColumnName="CardExpiration" />
+                <ScalarProperty Name="ShipFullname" ColumnName="ShipFullname" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="ShipCity" ColumnName="ShipCity" />
+                <ScalarProperty Name="ShipState" ColumnName="ShipState" />
+                <ScalarProperty Name="ShipCountry" ColumnName="ShipCountry" />
+                <ScalarProperty Name="ShipPostalCode" ColumnName="ShipPostalCode" />
+                <ScalarProperty Name="ShipInstructions" ColumnName="ShipInstructions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HiramsCraftProducts">
+            <EntityTypeMapping TypeName="HiramGroupModel.HiramsCraftProduct">
+              <MappingFragment StoreEntitySet="HiramsCraftProduct">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+                <ScalarProperty Name="ImageMIMEType" ColumnName="ImageMIMEType" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductCategory" ColumnName="ProductCategory" />
+                <ScalarProperty Name="ProductSubCategory" ColumnName="ProductSubCategory" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="WoodType" ColumnName="WoodType" />
+                <ScalarProperty Name="WoodStainType" ColumnName="WoodStainType" />
+                <ScalarProperty Name="MetalType" ColumnName="MetalType" />
+                <ScalarProperty Name="MetalFinish" ColumnName="MetalFinish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialProviders">
+            <EntityTypeMapping TypeName="HiramGroupModel.MaterialProvider">
+              <MappingFragment StoreEntitySet="MaterialProviders">
+                <ScalarProperty Name="MaterialProviderId" ColumnName="MaterialProviderId" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EstimatedCost" ColumnName="EstimatedCost" />
+                <ScalarProperty Name="ActualCost" ColumnName="ActualCost" />
+                <ScalarProperty Name="LeadTime" ColumnName="LeadTime" />
+                <ScalarProperty Name="HasMinimumOrder" ColumnName="HasMinimumOrder" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="HasBulkDiscount" ColumnName="HasBulkDiscount" />
+                <ScalarProperty Name="BulkDiscount" ColumnName="BulkDiscount" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Providers">
+            <EntityTypeMapping TypeName="HiramGroupModel.Provider">
+              <MappingFragment StoreEntitySet="Provider">
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+                <ScalarProperty Name="Profile" ColumnName="Profile" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceProviders">
+            <EntityTypeMapping TypeName="HiramGroupModel.ServiceProvider">
+              <MappingFragment StoreEntitySet="ServiceProviders">
+                <ScalarProperty Name="ServiceProviderId" ColumnName="ServiceProviderId" />
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EstimatedCost" ColumnName="EstimatedCost" />
+                <ScalarProperty Name="ActualCost" ColumnName="ActualCost" />
+                <ScalarProperty Name="LeadTime" ColumnName="LeadTime" />
+                <ScalarProperty Name="HasMinimumOrder" ColumnName="HasMinimumOrder" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="HasBulkDiscount" ColumnName="HasBulkDiscount" />
+                <ScalarProperty Name="BulkDiscount" ColumnName="BulkDiscount" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
